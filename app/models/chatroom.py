@@ -1,7 +1,7 @@
-from sqlalchemy import Column, String, ForeignKey, DateTime
-from sqlalchemy.sql import func
-from db.base import Base
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
+from datetime import datetime
+from db.base import Base
 
 class Chatroom(Base):
     __tablename__ = "chatrooms"
@@ -9,6 +9,8 @@ class Chatroom(Base):
     id = Column(String, primary_key=True, index=True)
     user_id = Column(String, ForeignKey("users.id"), nullable=False)
     title = Column(String, nullable=False)
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    messages = relationship("Message", back_populates="chatroom")
+    # user = relationship("User", back_populates="chatrooms")
+    # messages = relationship("Message", back_populates="chatroom", cascade="all, delete")

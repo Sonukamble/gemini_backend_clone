@@ -27,6 +27,7 @@ from app.db.base import Base  # import your declarative Base
 from app.models import user  # import all your models so Alembic sees them
 from app.models import otp
 from app.models import chatroom
+from app.models import message  # import all your models so Alembic sees them
 # from app.models import message
 
 target_metadata = Base.metadata
