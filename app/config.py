@@ -21,3 +21,4 @@ class Config:
     ALGORITHM = os.getenv("ALGORITHM")
     ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))  # Default to 30 minutes if not specified
 
+    REDIS_URL = os.getenv("REDIS_URL") 

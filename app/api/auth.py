@@ -14,6 +14,9 @@ from models.user import User
 from core.logger import logger
 from core.auth_utils import get_current_user
 
+from starlette.responses import JSONResponse
+
+
 
 auth_router = APIRouter(prefix="/auth", tags=["Auth"])
 
@@ -25,11 +28,25 @@ def signup(data: SignupRequest, db: Session = Depends(get_db)):
     try:
         user = auth_service.signup_user(db, data.mobile_number, data.name)
         if not user:
-            raise HTTPException(status_code=500, detail="User signup failed")
-        return user
+            raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="User signup failed")
+
+        user_response = {
+            "id": user.id,
+            "mobile_number": user.mobile_number,
+            "name": user.name,
+        }
+        return JSONResponse(status_code=status.HTTP_201_CREATED,
+                    content={
+                    "message": "User created successfully",
+                    "user": user_response
+                })
+    except HTTPException as e:
+        logger.error(f"Signup error for {data.mobile_number}: {e.detail}")
+        raise e
     except Exception as e:
-        logger.error(f"Signup error for {data.mobile_number}: {e}")
-        raise HTTPException(status_code=500, detail="Internal Server Error")
+        logger.error(f"Unexpected error during signup for {data.mobile_number}: {e}")
+        return JSONResponse(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, 
+                            content={"message": "Internal Server Error"})
 
 
 @auth_router.post("/send-otp", status_code=status.HTTP_200_OK)
@@ -42,20 +59,26 @@ def send_otp(data: SendOTPRequest, db: Session = Depends(get_db)):
         if not user:
             raise HTTPException(status_code=404, detail="User not found")
 
-        otp_code = auth_service.send_otp(db, user.id, data.purpose)
+        otp_code = auth_service.send_otp(db, user.id, data.purpose,data.mobile_number)
         if not otp_code:
             raise HTTPException(status_code=500, detail="Failed to generate OTP")
 
         logger.info(f"OTP sent to {data.mobile_number} for {data.purpose}")
-        return {
-            "message": "OTP sent successfully",
-            "otp": otp_code
-        }
+        return JSONResponse(
+            status_code=status.HTTP_200_OK,
+            content={
+                "message": "OTP sent successfully",
+                "otp": otp_code
+            }
+        )
     except HTTPException:
         raise
     except Exception as e:
         logger.error(f"Error sending OTP for {data.mobile_number}: {e}")
-        raise HTTPException(status_code=500, detail="Internal Server Error")
+        return JSONResponse(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            content={"message": "Internal Server Error"}
+        )
     
 
 @auth_router.post("/verify-otp", response_model=TokenResponse)
@@ -69,12 +92,20 @@ def verify_otp(data: VerifyOTPRequest, db: Session = Depends(get_db)):
             raise HTTPException(status_code=400, detail="Invalid or expired OTP")
 
         logger.info(f"OTP verified for {data.mobile_number}")
-        return {"access_token": access_token, "token_type": "bearer"}
-    except HTTPException:
-        raise
+        return JSONResponse(
+            status_code=status.HTTP_200_OK,
+            content={
+                "message": "OTP verified successfully",
+                "access_token": access_token,
+                "token_type": "bearer"
+            }
+        )
     except Exception as e:
         logger.error(f"OTP verification failed for {data.mobile_number}: {e}")
-        raise HTTPException(status_code=500, detail="Internal Server Error")
+        return JSONResponse(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            content={"message": "Internal Server Error"}
+        )
     
 
 
@@ -93,9 +124,15 @@ def change_password(
             raise HTTPException(status_code=500, detail="Password update failed")
 
         logger.info(f"Password changed for user {user.id}")
-        return {"message": "Password changed successfully"}
-    except HTTPException:
-        raise
+        return JSONResponse(
+            status_code=status.HTTP_200_OK,
+            content={
+                "message": "Password changed successfully"
+            }
+        )
     except Exception as e:
         logger.error(f"Error changing password for user {user.id}: {e}")
-        raise HTTPException(status_code=500, detail="Internal Server Error")
+        return JSONResponse(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            content={"message": "Internal Server Error"}
+        )

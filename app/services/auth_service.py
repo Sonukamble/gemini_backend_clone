@@ -6,6 +6,7 @@ from core.otp import generate_otp
 from core.jwt import create_access_token
 from core.auth import hash_password
 from core.logger import logger
+from workers.otp_task import send_otp_task
 
 from datetime import datetime, timedelta
 import uuid
@@ -28,7 +29,7 @@ def signup_user(db: Session, mobile_number: str, name: Optional[str] = None) -> 
         return None
     
 
-def send_otp(db: Session, user_id: str, purpose: str) -> Optional[str]:
+def send_otp(db: Session, user_id: str, purpose: str,mobile_number: str) -> Optional[str]:
     """
     Generates and stores a new OTP for a user.
     """
@@ -44,6 +45,10 @@ def send_otp(db: Session, user_id: str, purpose: str) -> Optional[str]:
         )
         db.add(otp_entry)
         db.commit()
+
+        # Trigger Celery task asynchronously
+        send_otp_task.delay(mobile_number, otp_code)
+
         logger.info(f"OTP sent for user {user_id}, purpose={purpose}")
         return otp_code
     except SQLAlchemyError as e:

@@ -1,0 +1,30 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.egg-info/
+dist/
+build/
+
+# Logs
+logs/
+*.log
+
+
+# alembic
+alembic/versions/*.pyc
+alembic/versions/__pycache__/
+
+# Virtual Environment
+.venv/
+
+# Environment Variables
+.env
+.env.*
+
+# VS Code & IDE settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
