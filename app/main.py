@@ -2,6 +2,8 @@ from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
 from api.auth import auth_router
 from api.user import user_router
+from api.message import message_router
+from api.chatroom import chat_router
 
 app = FastAPI(
     title="gemini_backend_clone",
@@ -34,3 +36,5 @@ async def root():
 
 app.include_router(auth_router)
 app.include_router(user_router)
+app.include_router(chat_router)
+app.include_router(message_router)

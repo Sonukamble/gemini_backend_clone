@@ -17,6 +17,10 @@ Celery_app.conf.update(
         "workers.otp_tasks.send_otp_task": {
             "queue": "otp_queue"
         },
+        "workers.message_task.process_message_response": {
+            "queue": "message_queue"
+        },
+        
     },
     task_serializer="json",
     result_serializer="json",

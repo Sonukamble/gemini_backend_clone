@@ -22,3 +22,15 @@ class Config:
     ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))  # Default to 30 minutes if not specified
 
     REDIS_URL = os.getenv("REDIS_URL") 
+
+    # Stripe configuration
+    STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
+    STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET")
+    STRIPE_PRO_PRICE_ID = os.getenv("STRIPE_PRO_PRICE_ID")
+    FRONTEND_URL = os.getenv("FRONTEND_URL")
+
+    # gemini configuration
+    GOOGLE_API_KEY=os.getenv("GOOGLE_API_KEY")
+    
+
+    

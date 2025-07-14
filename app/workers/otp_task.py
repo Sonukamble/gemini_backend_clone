@@ -6,7 +6,6 @@ import time
 def send_otp_task(mobile_number, otp_code):
     """
     Mock OTP sending task.
-    Replace this logic with actual SMS API integration in production.
     """
     print(f"[OTP Task] Sending OTP {otp_code} to {mobile_number}")
     # Simulate sending delay

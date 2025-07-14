@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey, Text, DateTime, Enum
 from sqlalchemy.orm import relationship
 from datetime import datetime
 import enum
-from app.db.base import Base
+from db.base import Base
 
 class SenderEnum(str, enum.Enum):
     user = "user"
