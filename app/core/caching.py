@@ -4,8 +4,8 @@ from typing import Optional, List
 import json
 import os
 
-from core.logger import logger
-from config import Config
+from app.core.logger import logger
+from app.config import Config
 
 
 # Create Redis connection

@@ -1,10 +1,10 @@
 # app/services/gemini_client.py
 
 import google.generativeai as genai
-from config import Config
 from typing import List, Dict
 
-from core.logger import logger
+from app.config import Config
+from app.core.logger import logger
 
 MAX_TOTAL_TOKENS = 8192
 MAX_OUTPUT_TOKENS = 1024

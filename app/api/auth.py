@@ -1,18 +1,19 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from db.session import get_db
-from schemas.auth import (
+
+from app.db.session import get_db
+from app.schemas.auth import (
     SignupRequest,
     SendOTPRequest,
     VerifyOTPRequest,
     ChangePasswordRequest,
     TokenResponse,
 )
-from schemas.user import UserResponse
-from services import auth_service
-from models.user import User
-from core.logger import logger
-from core.auth_utils import get_current_user
+from app.schemas.user import UserResponse
+from app.services import auth_service
+from app.models.user import User
+from app.core.logger import logger
+from app.core.auth_utils import get_current_user
 
 from starlette.responses import JSONResponse
 

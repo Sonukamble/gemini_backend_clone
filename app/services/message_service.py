@@ -1,6 +1,6 @@
 from fastapi import HTTPException
-from models.message import Message, SenderEnum
-from core.logger import logger
+from app.models.message import Message, SenderEnum
+from app.core.logger import logger
 
 from sqlalchemy.orm import Session
 

@@ -1,9 +1,10 @@
 from datetime import datetime, timedelta
 
-from core.caching import redis
 
 # Initialize Redis connection (adjust host/port/db as needed)
 from fastapi import HTTPException, status
+
+from app.core.caching import redis
 
 PROMPT_LIMIT_BASIC = 5
 

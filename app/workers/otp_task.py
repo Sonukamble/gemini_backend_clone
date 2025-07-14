@@ -1,6 +1,7 @@
-from workers.queue import Celery_app
 import random
 import time
+
+from app.workers.queue import Celery_app
 
 @Celery_app.task(name="workers.otp_tasks.send_otp_task")
 def send_otp_task(mobile_number, otp_code):

@@ -1,6 +1,6 @@
 from celery import Celery
 
-from config import Config
+from app.config import Config
 
 Redis_URL = Config.REDIS_URL
 

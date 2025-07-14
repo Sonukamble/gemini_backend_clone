@@ -1,12 +1,13 @@
 # from app.integrations.gemini import GeminiAPI
 from typing import Dict, List
-from db.session import SessionLocal
-from integrations.gemini import GeminiChatClient
-from services.message_service import create_gemini_message
-from workers.queue import Celery_app
 from sqlalchemy.orm import Session
 
-from core.logger import logger
+
+from app.db.session import SessionLocal
+from app.integrations.gemini import GeminiChatClient
+from app.services.message_service import create_gemini_message
+from app.workers.queue import Celery_app
+from app.core.logger import logger
 
 @Celery_app.task(name="workers.message_task.process_message_response")
 def process_gemini_response(chatroom_id: str,chat_history: List[Dict[str, List[str]]], user_message: str):   

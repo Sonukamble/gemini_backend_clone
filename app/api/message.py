@@ -1,16 +1,18 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from db.session import get_db
-from services.limiting import check_prompt_limit
-from services.subscription_service import SubscriptionService
-from schemas.message import MessageCreate, MessageRead
-from services import message_service
-from workers.message_task import process_gemini_response
-from models.user import User
-from core.logger import logger
-from core.auth_utils import get_current_user
-
 from starlette.responses import JSONResponse
+
+
+from app.db.session import get_db
+from app.services.limiting import check_prompt_limit
+from app.services.subscription_service import SubscriptionService
+from app.schemas.message import MessageCreate, MessageRead
+from app.services import message_service
+from app.workers.message_task import process_gemini_response
+from app.models.user import User
+from app.core.logger import logger
+from app.core.auth_utils import get_current_user
+
 
 message_router = APIRouter(prefix="/message", tags=["Message"])
 

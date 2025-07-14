@@ -1,6 +1,7 @@
 from sqlalchemy.orm import declarative_base
-from config import Config
 from sqlalchemy import create_engine
+
+from app.config import Config
 
 
 Base = declarative_base()

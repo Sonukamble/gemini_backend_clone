@@ -1,16 +1,17 @@
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
-from models.user import User
-from models.otp import OTP
-from core.otp import generate_otp
-from core.jwt import create_access_token
-from core.auth import hash_password
-from core.logger import logger
-from workers.otp_task import send_otp_task
-
 from datetime import datetime, timedelta
 import uuid
 from typing import Optional
+
+from app.models.user import User
+from app.models.otp import OTP
+from app.core.otp import generate_otp
+from app.core.jwt import create_access_token
+from app.core.auth import hash_password
+from app.core.logger import logger
+from app.workers.otp_task import send_otp_task
+
 
 def signup_user(db: Session, mobile_number: str, name: Optional[str] = None) -> Optional[User]:
     """

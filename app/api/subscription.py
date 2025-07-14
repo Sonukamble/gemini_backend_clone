@@ -3,11 +3,11 @@ from starlette.responses import JSONResponse
 from fastapi import status
 from fastapi import HTTPException
 
-from services.subscription_service import SubscriptionService
-from schemas.subscription import SubscriptionStatusResponse
-from core.logger import logger
-from core.auth_utils import get_current_user
-from models.user import User
+from app.services.subscription_service import SubscriptionService
+from app.schemas.subscription import SubscriptionStatusResponse
+from app.core.logger import logger
+from app.core.auth_utils import get_current_user
+from app.models.user import User
 
 router = APIRouter()
 

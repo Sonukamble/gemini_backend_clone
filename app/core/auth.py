@@ -1,7 +1,7 @@
 from passlib.context import CryptContext
 from typing import Optional
 
-from core.logger import logger
+from app.core.logger import logger
 # Password hashing context
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 

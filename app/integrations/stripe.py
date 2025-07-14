@@ -1,6 +1,7 @@
 import stripe
-from config import Config
-from core.logger import logger
+
+from app.config import Config
+from app.core.logger import logger
 
 stripe.api_key = Config.STRIPE_SECRET_KEY
 endpoint_secret = Config.STRIPE_WEBHOOK_SECRET

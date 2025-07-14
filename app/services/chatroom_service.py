@@ -1,11 +1,11 @@
 from fastapi import HTTPException
-from models.chatroom import Chatroom
-from schemas.chatroom import ChatroomCreate
-from core.logger import logger
 import uuid
-
 from sqlalchemy.orm import Session
 from starlette.responses import JSONResponse
+
+from app.schemas.chatroom import ChatroomCreate
+from app.models.chatroom import Chatroom
+from app.core.logger import logger
 
 def create_chatroom(db: Session, user_id: str, chatroom: ChatroomCreate) -> Chatroom:
     """

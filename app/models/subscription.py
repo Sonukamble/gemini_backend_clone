@@ -1,8 +1,9 @@
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, func, Enum
 from sqlalchemy.orm import relationship
-from db.base import Base
 import datetime
 import enum as py_enum
+
+from app.db.base import Base
 
 class SubscriptionTierEnum(str, py_enum.Enum):
     basic = "basic"

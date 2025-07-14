@@ -5,13 +5,13 @@ from starlette.responses import JSONResponse
 from typing import List
 
 
-from db.session import get_db
-from schemas.chatroom import ChatroomCreate, ChatroomRead
-from services import chatroom_service
-from core import caching
-from models.user import User
-from core.auth_utils import get_current_user
-from core.logger import logger
+from app.db.session import get_db
+from app.schemas.chatroom import ChatroomCreate, ChatroomRead
+from app.services import chatroom_service
+from app.core import caching
+from app.models.user import User
+from app.core.auth_utils import get_current_user
+from app.core.logger import logger
 
 chat_router = APIRouter(prefix="/chat", tags=["Chat"])
 

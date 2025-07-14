@@ -1,10 +1,10 @@
 from fastapi import Depends, HTTPException, Header, status
 from sqlalchemy.orm import Session
 
-from core.jwt import verify_token
-from db.session import get_db
-from models.user import User
-from core.logger import logger  
+from app.core.jwt import verify_token
+from app.db.session import get_db
+from app.models.user import User
+from app.core.logger import logger  
 
 def get_current_user(
     authorization: str = Header(..., description="Bearer access token"),

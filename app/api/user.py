@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, status
-
-from schemas.user import UserResponse
-from models.user import User
-from core.auth_utils import get_current_user
-from core.logger import logger
 from starlette.responses import JSONResponse
+
+from app.schemas.user import UserResponse
+from app.models.user import User
+from app.core.auth_utils import get_current_user
+from app.core.logger import logger
 
 user_router = APIRouter(prefix="/user", tags=["User"])
 

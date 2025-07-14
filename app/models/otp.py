@@ -1,6 +1,7 @@
 from sqlalchemy import Column, String, DateTime, Boolean, ForeignKey
 from sqlalchemy.sql import func
-from db.base import Base
+
+from app.db.base import Base
 
 class OTP(Base):
     __tablename__ = "otps"

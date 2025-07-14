@@ -4,8 +4,8 @@ from datetime import datetime, timedelta
 from typing import Optional, Dict, Any
 from jose import jwt, JWTError
 
-from core.logger import logger
-from config import Config
+from app.core.logger import logger
+from app.config import Config
 
 
 def create_access_token(data: Dict[str, Any], expires_delta: Optional[timedelta] = None) -> Optional[str]:

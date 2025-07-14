@@ -1,10 +1,10 @@
-from integrations.stripe import StripeClient
 from sqlalchemy.orm import Session
-
-from db.session import SessionLocal
-from models.subscription import Subscription, SubscriptionTierEnum
 from fastapi.responses import JSONResponse
-from core.logger import logger
+
+from app.integrations.stripe import StripeClient
+from app.db.session import SessionLocal
+from app.models.subscription import Subscription, SubscriptionTierEnum
+from app.core.logger import logger
 
 class SubscriptionService:
     @staticmethod
