@@ -21,7 +21,7 @@ app = FastAPI(
 )
 
 # CORS Middleware configuration
-origins = ["*"]
+origins = ["*","https://gemini-backend-clone-ddm4.onrender.com", "http://localhost:3000"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
