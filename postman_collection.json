@@ -1,0 +1,429 @@
+{
+	"info": {
+		"_postman_id": "e5676f31-26d3-4375-a414-507afbbbea28",
+		"name": "gemini",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33655163"
+	},
+	"item": [
+		{
+			"name": "chatroom management",
+			"item": [
+				{
+					"name": "create chatroom",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmZiODcxYzEtNzVlZC00NjM3LWI4NGItMTJlZmE4YTA2NDQyIiwiZXhwIjoxNzUyNTUyNzM2fQ.VOWarRELv0Xg9X3NB7i0elH79_mBk03-WkQS8OG9svQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"1st chatroom\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/chat/chatroom",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"chat",
+								"chatroom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get chatroom by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODMzZGVjYmYtYjU5OC00Mzg0LTg4YzAtZDJlOGYyNDdlMjg4IiwiZXhwIjoxNzUyNTE4NDkwfQ.R-27a7KexRiwWh_Y5rW0n8RnaFqQ2kjuSkPlGJ0k9qk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/chat/chatroom/5a8f1833-ee86-4833-8503-f87952fcd33c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"chat",
+								"chatroom",
+								"5a8f1833-ee86-4833-8503-f87952fcd33c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "message",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmZiODcxYzEtNzVlZC00NjM3LWI4NGItMTJlZmE4YTA2NDQyIiwiZXhwIjoxNzUyNTU1MjMwfQ.ABrw_EXiYKQvr-OVyETfjlSI2BJsshWAlX-OVKo4dbM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": \"how many fingers you have?\"\r\n}\r\n\r\n ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/message/779ea1bd-d094-4b3e-a9c1-a8ae225b4532",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"message",
+								"779ea1bd-d094-4b3e-a9c1-a8ae225b4532"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get list chatroom",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODMzZGVjYmYtYjU5OC00Mzg0LTg4YzAtZDJlOGYyNDdlMjg4IiwiZXhwIjoxNzUyNTE4NDkwfQ.R-27a7KexRiwWh_Y5rW0n8RnaFqQ2kjuSkPlGJ0k9qk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/chat/chatroom",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"chat",
+								"chatroom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get message",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODMzZGVjYmYtYjU5OC00Mzg0LTg4YzAtZDJlOGYyNDdlMjg4IiwiZXhwIjoxNzUyNTE4NDkwfQ.R-27a7KexRiwWh_Y5rW0n8RnaFqQ2kjuSkPlGJ0k9qk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/message/5a8f1833-ee86-4833-8503-f87952fcd33c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"message",
+								"5a8f1833-ee86-4833-8503-f87952fcd33c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subscription",
+			"item": [
+				{
+					"name": "subscribe/pro",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "subscribe/pro",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/subscribe/pro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"subscribe",
+								"pro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "subscription/status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "subscribe/pro",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/subscription/status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"subscription",
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"mobile_number\": \"1231199999\",\r\n  \"name\": \"user_first_chat\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send otp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"mobile_number\": \"1231199999\",\r\n  \"purpose\": \"login\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/auth/send-otp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"send-otp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verify otp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"mobile_number\": \"1231199999\",\r\n  \"otp\": \"1078\",\r\n  \"purpose\": \"login\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/auth/verify-otp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"verify-otp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "change password",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmZiODcxYzEtNzVlZC00NjM3LWI4NGItMTJlZmE4YTA2NDQyIiwiZXhwIjoxNzUyNTUyNzM2fQ.VOWarRELv0Xg9X3NB7i0elH79_mBk03-WkQS8OG9svQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"new_password\": \"test123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/auth/change-password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"change-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user/me",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmZiODcxYzEtNzVlZC00NjM3LWI4NGItMTJlZmE4YTA2NDQyIiwiZXhwIjoxNzUyNTUyNzM2fQ.VOWarRELv0Xg9X3NB7i0elH79_mBk03-WkQS8OG9svQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/user/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"me"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
